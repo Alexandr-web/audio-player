@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="#">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Аудио плеер</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="wrapper__header">
+      <div class="wrapper__header-content">
+        <div class="wrapper__header-block">
+          <div class="wrapper__header-block-img">
+            <img src="./images/musical-note.svg" alt="image song">
+          </div>
+          <div class="wrapper__header-block-info">
+            <h3 class="wrapper__header-block-info-song-name"></h3>
+            <div class="wrapper__header-block-info-song-duration">
+              <div class="wrapper__header-block-info-song-duration-settings">
+                <div class="wrapper__header-block-info-song-duration-controls">
+                  <ul class="wrapper__header-block-info-song-duration-controls-list">
+                    <li class="wrapper__header-block-info-song-duration-controls-list-item" data-controls="mute">
+                      <img src="./images/mute.svg" alt="mute">
+                      <input class="wrapper__header-block-info-song-duration-controls-list-item-range" type="range" min="0" max="100" value="100">
+                    </li>
+                    <li class="wrapper__header-block-info-song-duration-controls-list-item" data-controls="prev-song-btn">
+                      <img src="./images/next-song-btn.svg" alt="prev song button">
+                    </li>
+                    <li class="wrapper__header-block-info-song-duration-controls-list-item" data-controls="play">
+                      <img src="./images/pause.svg" alt="pause">
+                    </li>
+                    <li class="wrapper__header-block-info-song-duration-controls-list-item" data-controls="next-song-btn">
+                      <img src="./images/next-song-btn.svg" alt="next song button">
+                    </li>
+                  </ul>
+                </div>
+                <div class="wrapper__header-block-info-song-duration-time"></div>
+              </div>
+              <div class="wrapper__header-block-info-song-duration-range">
+                <div class="wrapper__header-block-info-song-duration-range-item">
+                  <span class="wrapper__header-block-info-song-duration-range-circle"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper__header-block">
+          <nav class="wrapper__header-block-nav">
+            <ul class="wrapper__header-block-list">
+              <li class="wrapper__header-block-list-item" data-option="menu">
+                <img src="./images/menu.svg" alt="menu">
+              </li>
+              <li class="wrapper__header-block-list-item" data-option="search">
+                <img src="./images/search.svg" alt="search">
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="wrapper__main">
+      <ul class="wrapper__main-list"></ul>
+    </main>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>

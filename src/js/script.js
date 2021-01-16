@@ -6,6 +6,7 @@ const audioPlayer = () => {
     url: '',
     el: ''
   };
+  const playedSongs = [];
 
   let volume = 1;
   let count = 0;
@@ -41,7 +42,7 @@ const audioPlayer = () => {
 
     time_songs.forEach((time, idx) => {
       new Audio(songs[idx].url).addEventListener('loadedmetadata', function() {
-        time.innerText = `${((this.duration / 60).toFixed(2)).replace(/\./, ':')} мин.`;
+        time.innerText = `${parseInt(this.duration / 60) < 10 ? `0${parseInt(this.duration / 60)}` : parseInt(this.duration / 60)}:${parseInt(this.duration % 60) < 10 ? `0${parseInt(this.duration % 60)}` : parseInt(this.duration % 60)}`;
       });
     });
   }
@@ -78,7 +79,7 @@ const audioPlayer = () => {
       }
 
       setControls('prev-song-btn', () => {
-        count++;
+        count--;
 
         checkCount();
         stopMusic();
@@ -88,7 +89,7 @@ const audioPlayer = () => {
       });
 
       setControls('next-song-btn', () => {
-        count--;
+        count++;
 
         checkCount();
         stopMusic();
@@ -188,7 +189,6 @@ const audioPlayer = () => {
     play = true;
 
     audio.src = songs[num].url;
-    audio.play();
 
     setActiveSong({ name: audio.dataset.songName, src: audio.src, el: audio });
     addBgToActiveSong(num);
@@ -228,6 +228,7 @@ const audioPlayer = () => {
     const active_song_name = document.querySelector('.wrapper__header-block-info-song-name');
     const block_range_duration = document.querySelector('.wrapper__header-block-info-song-duration-range');
     const active_song_duration = document.querySelector('.wrapper__header-block-info-song-duration-time');
+    const range_duration_time = document.querySelector('.wrapper__header-block-info-song-duration-range-time');
     const range_duration = document.querySelector('.wrapper__header-block-info-song-duration-range-item');
     const { name, el } = activeSong;
 
@@ -237,6 +238,8 @@ const audioPlayer = () => {
       el.addEventListener('timeupdate', () => {
         const width = Math.round((el.currentTime / el.duration) * 100);
         range_duration.style.width = `${width}%`;
+
+        active_song_duration.innerText = `${parseInt(el.currentTime / 60) < 10 ? `0${parseInt(el.currentTime / 60)}` : parseInt(el.currentTime / 60)}:${parseInt(el.currentTime % 60) < 10 ? `0${parseInt(el.currentTime % 60)}` : parseInt(el.currentTime % 60)}`;
       });
     });
 
